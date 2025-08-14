@@ -90,16 +90,16 @@ class VideoAnalyticsAdmin(admin.ModelAdmin):
 
 class VideoCommentAdmin(admin.ModelAdmin):
     list_display = [
-        'author', 'video', 'is_approved', 'is_flagged', 'is_reply', 'created_at'
+        'user', 'video', 'is_approved', 'is_flagged', 'is_reply', 'created_at'
     ]
     list_filter = ['is_approved', 'is_flagged', 'created_at', 'video']
-    search_fields = ['author__username', 'video__title', 'content']
+    search_fields = ['user__username', 'video__title', 'content']
     readonly_fields = ['created_at', 'updated_at']
     ordering = ['-created_at']
     
     fieldsets = (
         (_('Comment Information'), {
-            'fields': ('post', 'author', 'parent_comment')
+            'fields': ('user', 'video', 'parent_comment')
         }),
         (_('Content'), {
             'fields': ('content', 'timestamp')
