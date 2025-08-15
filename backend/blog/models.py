@@ -40,6 +40,7 @@ class BlogTag(models.Model):
     name = models.CharField(_('name'), max_length=50, unique=True)
     slug = models.SlugField(_('slug'), max_length=50, unique=True)
     description = models.TextField(_('description'), blank=True)
+    is_active = models.BooleanField(_('is active'), default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
@@ -80,6 +81,7 @@ class BlogPost(models.Model):
     ]
     status = models.CharField(_('status'), max_length=10, choices=STATUS_CHOICES, default='draft')
     is_featured = models.BooleanField(_('is featured'), default=False)
+    is_active = models.BooleanField(_('is active'), default=True)
     allow_comments = models.BooleanField(_('allow comments'), default=True)
     
     # SEO and metadata

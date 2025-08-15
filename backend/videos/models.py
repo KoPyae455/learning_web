@@ -48,6 +48,7 @@ class Video(models.Model):
     # Video settings
     is_public = models.BooleanField(_('is public'), default=True)
     allow_download = models.BooleanField(_('allow download'), default=False)
+    is_active = models.BooleanField(_('is active'), default=True)
     
     # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)

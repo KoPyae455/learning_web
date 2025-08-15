@@ -63,9 +63,11 @@ class Course(models.Model):
     price = models.DecimalField(_('price'), max_digits=10, decimal_places=2, default=0.00)
     is_published = models.BooleanField(_('is published'), default=False)
     is_featured = models.BooleanField(_('is featured'), default=False)
+    is_active = models.BooleanField(_('is active'), default=True)
     
     # Course statistics
     enrolled_students = models.PositiveIntegerField(_('enrolled students'), default=0)
+    enrollment_count = models.PositiveIntegerField(_('enrollment count'), default=0)
     rating = models.DecimalField(
         _('rating'), 
         max_digits=3, 
@@ -130,6 +132,7 @@ class Lesson(models.Model):
     # Lesson settings
     is_free = models.BooleanField(_('is free'), default=False)
     is_published = models.BooleanField(_('is published'), default=True)
+    is_active = models.BooleanField(_('is active'), default=True)
     
     # Lesson resources
     resources = models.JSONField(_('resources'), default=list, blank=True)  # List of file URLs
