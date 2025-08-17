@@ -26,8 +26,6 @@ class UserRegistrationView(generics.CreateAPIView):
         
         with transaction.atomic():
             user = serializer.save()
-            # Create user profile
-            UserProfile.objects.create(user=user)
             
             # Log activity
             UserActivity.objects.create(
