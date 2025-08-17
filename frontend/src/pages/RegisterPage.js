@@ -58,8 +58,27 @@ const RegisterPage = () => {
     try {
       setError('');
       setLoading(true);
-      await register(name, email, password);
-      navigate('/dashboard');
+
+      const [first_name, ...rest] = name.trim().split(' ');
+      const last_name = rest.join(' ');
+      const username = email.includes('@') ? email.split('@')[0] : (name || 'user').replace(/\s+/g, '').toLowerCase();
+
+      const userData = {
+        username,
+        email,
+        first_name: first_name || '',
+        last_name: last_name || '',
+        password,
+        password_confirm: confirmPassword,
+        user_type: 'student',
+      };
+
+      const result = await register(userData);
+      if (result?.success) {
+        navigate('/dashboard');
+      } else if (result?.error) {
+        setError(result.error);
+      }
     } catch (err) {
       setError(err.message || 'Failed to create an account');
       console.error(err);
