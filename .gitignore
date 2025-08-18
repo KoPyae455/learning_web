@@ -1,0 +1,33 @@
+# python 
+__pychache__
+*.py[cod]
+# virtual environment
+venv/
+# node modules
+node_modules/
+# build output
+dist/
+# logs
+*.log
+# IDE specific files
+.idea/
+# OS generated files
+.DS_Store
+# coverage reports
+coverage/
+# environment variables
+# django 
+.env
+/media
+/staticfiles
+
+# Node.js
+node_modules/
+dist/
+build/
+# npm package lock
+package-lock.json
+# yarn lock file
+
+# VS Code
+.vscode/

@@ -50,21 +50,17 @@ const RegisterPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     if (password !== confirmPassword) {
       return setError("Passwords don't match");
     }
-
     try {
       setError('');
       setLoading(true);
-
       const [first_name, ...rest] = name.trim().split(' ');
       const last_name = rest.join(' ');
-      const username = email.includes('@') ? email.split('@')[0] : (name || 'user').replace(/\s+/g, '').toLowerCase();
-
+      // Use email for both username and email fields
       const userData = {
-        username,
+        username: email,
         email,
         first_name: first_name || '',
         last_name: last_name || '',
@@ -72,7 +68,6 @@ const RegisterPage = () => {
         password_confirm: confirmPassword,
         user_type: 'student',
       };
-
       const result = await register(userData);
       if (result?.success) {
         navigate('/dashboard');
