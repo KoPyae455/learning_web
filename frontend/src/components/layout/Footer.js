@@ -14,6 +14,7 @@ import {
   LinkedIn as LinkedInIcon,
   GitHub as GitHubIcon,
   Email as EmailIcon,
+  Telegram as TelegramIcon,
 } from '@mui/icons-material';
 
 const Footer = () => {
@@ -50,11 +51,12 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <FacebookIcon />, href: 'https://facebook.com', label: 'Facebook' },
+    { icon: <FacebookIcon />, href: 'https://www.facebook.com/pyae.sone.842393', label: 'Facebook' },
     { icon: <TwitterIcon />, href: 'https://twitter.com', label: 'Twitter' },
     { icon: <LinkedInIcon />, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: <GitHubIcon />, href: 'https://github.com', label: 'GitHub' },
-    { icon: <EmailIcon />, href: 'mailto:contact@learningplatform.com', label: 'Email' },
+    { icon: <GitHubIcon />, href: 'https://github.com/KoPyae455', label: 'GitHub' },
+    { icon: <EmailIcon />, href: 'pyaesone@kopyae.com', label: 'Email' },
+    { icon: <TelegramIcon/>, href: 'https://t.me/kopyaegtr455', label: 'Telegram' }
   ];
 
   return (

@@ -71,6 +71,8 @@ const Navbar = () => {
     { text: 'Home', path: '/', icon: null },
     { text: 'Courses', path: '/courses', icon: <SchoolIcon /> },
     { text: 'Blog', path: '/blog', icon: <ArticleIcon /> },
+    // { text: 'Certificates', path: '/certificates', icon: <SchoolIcon /> },
+    // { text: 'Help Center', path: '/help-center', icon: <SettingsIcon /> },
   ];
 
   const userMenuItems = [

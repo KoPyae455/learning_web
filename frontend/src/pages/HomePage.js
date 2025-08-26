@@ -61,9 +61,9 @@ const HomePage = () => {
       title: 'Complete Python Programming',
       description: 'Master Python from basics to advanced concepts',
       image: 'https://source.unsplash.com/400x250/?python,programming',
-      instructor: 'John Doe',
+      instructor: 'Elon Pyae',
       rating: 4.8,
-      students: 1250,
+      students: 120,
       duration: '12 hours',
       level: 'Beginner',
       price: '$49.99',
@@ -187,7 +187,7 @@ const HomePage = () => {
               >
                 <Box
                   component="img"
-                  src="https://source.unsplash.com/600x400/?online-learning"
+                  src="https://media.geeksforgeeks.org/wp-content/uploads/20240319155102/what-is-ai-artificial-intelligence.webp"
                   alt="Online Learning"
                   sx={{
                     width: '100%',

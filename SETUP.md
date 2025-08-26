@@ -36,7 +36,7 @@ learning-platform/
 
 ```bash
 # Navigate to project directory
-cd learning-platform
+cd learning-web
 
 # Create virtual environment
 python -m venv venv

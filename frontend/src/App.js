@@ -18,6 +18,11 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import DashboardPage from './pages/DashboardPage';
+import CertificatesPage from './pages/CertificatesPage';
+import HelpCenterPage from './pages/HelpCenterPage';
+import ContactPage from './pages/ContactPage';
+import FAQPage from './pages/FAQPage';
+import CommunityPage from './pages/CommunityPage';
 
 // Context
 import { AuthProvider } from './contexts/AuthContext';
@@ -106,6 +111,11 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/certificates" element={<CertificatesPage />} />
+                <Route path="/help-center" element={<HelpCenterPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/faq" element={<FAQPage />} />
+                <Route path="/community" element={<CommunityPage />} />
               </Routes>
             </Box>
             <Footer />
