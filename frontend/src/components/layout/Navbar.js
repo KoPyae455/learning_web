@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -17,7 +17,7 @@ import {
   Divider,
   useTheme,
   useMediaQuery,
-} from '@mui/material';
+} from "@mui/material";
 import {
   Menu as MenuIcon,
   School as SchoolIcon,
@@ -26,13 +26,13 @@ import {
   Dashboard as DashboardIcon,
   Logout as LogoutIcon,
   Settings as SettingsIcon,
-} from '@mui/icons-material';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
+} from "@mui/icons-material";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Navbar = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const { user, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -55,7 +55,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     await logout();
     handleProfileMenuClose();
-    navigate('/');
+    navigate("/");
   };
 
   const handleNavigation = (path) => {
@@ -68,22 +68,22 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { text: 'Home', path: '/', icon: null },
-    { text: 'Courses', path: '/courses', icon: <SchoolIcon /> },
-    { text: 'Blog', path: '/blog', icon: <ArticleIcon /> },
+    { text: "Home", path: "/", icon: null },
+    { text: "Courses", path: "/courses", icon: <SchoolIcon /> },
+    { text: "Blog", path: "/blog", icon: <ArticleIcon /> },
     // { text: 'Certificates', path: '/certificates', icon: <SchoolIcon /> },
     // { text: 'Help Center', path: '/help-center', icon: <SettingsIcon /> },
   ];
 
   const userMenuItems = [
-    { text: 'Profile', path: '/profile', icon: <PersonIcon /> },
-    { text: 'Dashboard', path: '/dashboard', icon: <DashboardIcon /> },
-    { text: 'Settings', path: '/settings', icon: <SettingsIcon /> },
+    { text: "Profile", path: "/profile", icon: <PersonIcon /> },
+    { text: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
+    { text: "Settings", path: "/settings", icon: <SettingsIcon /> },
   ];
 
   const drawer = (
     <Box>
-      <Box sx={{ p: 2, textAlign: 'center' }}>
+      <Box sx={{ p: 2, textAlign: "center" }}>
         <Typography variant="h6" color="primary">
           Learning Platform
         </Typography>
@@ -97,16 +97,18 @@ const Navbar = () => {
             onClick={() => handleNavigation(item.path)}
             selected={isActive(item.path)}
             sx={{
-              '&.Mui-selected': {
-                backgroundColor: 'primary.light',
-                color: 'primary.contrastText',
-                '&:hover': {
-                  backgroundColor: 'primary.main',
+              "&.Mui-selected": {
+                backgroundColor: "primary.light",
+                color: "primary.contrastText",
+                "&:hover": {
+                  backgroundColor: "primary.main",
                 },
               },
             }}
           >
-            {item.icon && <ListItemIcon sx={{ color: 'inherit' }}>{item.icon}</ListItemIcon>}
+            {item.icon && (
+              <ListItemIcon sx={{ color: "inherit" }}>{item.icon}</ListItemIcon>
+            )}
             <ListItemText primary={item.text} />
           </ListItem>
         ))}
@@ -133,10 +135,10 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <ListItem button onClick={() => handleNavigation('/login')}>
+            <ListItem button onClick={() => handleNavigation("/login")}>
               <ListItemText primary="Login" />
             </ListItem>
-            <ListItem button onClick={() => handleNavigation('/register')}>
+            <ListItem button onClick={() => handleNavigation("/register")}>
               <ListItemText primary="Register" />
             </ListItem>
           </>
@@ -167,8 +169,8 @@ const Navbar = () => {
             to="/"
             sx={{
               flexGrow: 1,
-              textDecoration: 'none',
-              color: 'inherit',
+              textDecoration: "none",
+              color: "inherit",
               fontWeight: 700,
             }}
           >
@@ -176,7 +178,7 @@ const Navbar = () => {
           </Typography>
 
           {!isMobile && (
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
               {navItems.map((item) => (
                 <Button
                   key={item.text}
@@ -184,10 +186,10 @@ const Navbar = () => {
                   component={Link}
                   to={item.path}
                   sx={{
-                    textTransform: 'none',
+                    textTransform: "none",
                     fontWeight: isActive(item.path) ? 600 : 400,
-                    borderBottom: isActive(item.path) ? '2px solid' : 'none',
-                    borderColor: 'inherit',
+                    borderBottom: isActive(item.path) ? "2px solid" : "none",
+                    borderColor: "inherit",
                   }}
                 >
                   {item.text}
@@ -195,11 +197,8 @@ const Navbar = () => {
               ))}
 
               {isAuthenticated ? (
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <IconButton
-                    onClick={handleProfileMenuOpen}
-                    sx={{ p: 0 }}
-                  >
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                  <IconButton onClick={handleProfileMenuOpen} sx={{ p: 0 }}>
                     <Avatar
                       alt={user?.full_name || user?.username}
                       src={user?.avatar}
@@ -210,12 +209,12 @@ const Navbar = () => {
                   </IconButton>
                 </Box>
               ) : (
-                <Box sx={{ display: 'flex', gap: 1 }}>
+                <Box sx={{ display: "flex", gap: 1 }}>
                   <Button
                     color="inherit"
                     component={Link}
                     to="/login"
-                    sx={{ textTransform: 'none' }}
+                    sx={{ textTransform: "none" }}
                   >
                     Login
                   </Button>
@@ -224,7 +223,7 @@ const Navbar = () => {
                     color="secondary"
                     component={Link}
                     to="/register"
-                    sx={{ textTransform: 'none' }}
+                    sx={{ textTransform: "none" }}
                   >
                     Register
                   </Button>
@@ -244,8 +243,8 @@ const Navbar = () => {
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 280 },
+          display: { xs: "block", md: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: 280 },
         }}
       >
         {drawer}
@@ -260,10 +259,10 @@ const Navbar = () => {
         PaperProps={{
           elevation: 0,
           sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+            overflow: "visible",
+            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
-            '& .MuiAvatar-root': {
+            "& .MuiAvatar-root": {
               width: 32,
               height: 32,
               ml: -0.5,
@@ -271,13 +270,13 @@ const Navbar = () => {
             },
           },
         }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={() => handleNavigation('/profile')}>
+        <MenuItem onClick={() => handleNavigation("/profile")}>
           <Avatar /> Profile
         </MenuItem>
-        <MenuItem onClick={() => handleNavigation('/dashboard')}>
+        <MenuItem onClick={() => handleNavigation("/dashboard")}>
           <DashboardIcon /> Dashboard
         </MenuItem>
         <Divider />

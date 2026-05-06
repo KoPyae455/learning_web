@@ -1,5 +1,5 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React from "react";
+import { useParams } from "react-router-dom";
 import {
   Box,
   Container,
@@ -17,15 +17,15 @@ import {
   TextField,
   // useTheme,
   // useMediaQuery,
-} from '@mui/material';
+} from "@mui/material";
 import {
   Bookmark as BookmarkIcon,
   Share as ShareIcon,
   CalendarToday as CalendarIcon,
   Person as PersonIcon,
   ArrowBack as BackIcon,
-} from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+} from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const BlogPostPage = () => {
   const { id } = useParams();
@@ -35,7 +35,7 @@ const BlogPostPage = () => {
   // Mock blog post data - replace with actual data from your backend
   const post = {
     id: id,
-    title: 'Getting Started with React Hooks',
+    title: "Getting Started with React Hooks",
     content: `
       <p>React Hooks have revolutionized how we write React components. Introduced in React 16.8, hooks allow you to use state and other React features without writing classes.</p>
       
@@ -84,28 +84,29 @@ const BlogPostPage = () => {
       <h2>Conclusion</h2>
       <p>Hooks provide a more direct API to the React concepts you already know: props, state, context, refs, and lifecycle. They don't fundamentally change how React works, but they make your code cleaner and easier to understand.</p>
     `,
-    image: 'https://source.unsplash.com/800x450/?react,javascript',
-    category: 'react',
-    author: 'Jane Smith',
-    authorAvatar: 'https://source.unsplash.com/100x100/?portrait,woman',
-    authorBio: 'Senior React Developer with 5+ years of experience. Loves teaching and sharing knowledge about frontend technologies.',
-    date: 'May 15, 2023',
-    readTime: '5 min read',
-    tags: ['react', 'hooks', 'frontend'],
+    image: "https://source.unsplash.com/800x450/?react,javascript",
+    category: "react",
+    author: "Jane Smith",
+    authorAvatar: "https://source.unsplash.com/100x100/?portrait,woman",
+    authorBio:
+      "Senior React Developer with 5+ years of experience. Loves teaching and sharing knowledge about frontend technologies.",
+    date: "May 15, 2023",
+    readTime: "5 min read",
+    tags: ["react", "hooks", "frontend"],
     relatedPosts: [
       {
         id: 4,
-        title: 'Building Scalable APIs with Node.js',
-        excerpt: 'Best practices for creating scalable and maintainable APIs',
-        image: 'https://source.unsplash.com/400x250/?nodejs,api',
-        date: 'March 22, 2023',
+        title: "Building Scalable APIs with Node.js",
+        excerpt: "Best practices for creating scalable and maintainable APIs",
+        image: "https://source.unsplash.com/400x250/?nodejs,api",
+        date: "March 22, 2023",
       },
       {
         id: 5,
-        title: 'CSS Grid vs Flexbox: When to Use Each',
-        excerpt: 'A comprehensive comparison between CSS Grid and Flexbox',
-        image: 'https://source.unsplash.com/400x250/?css,design',
-        date: 'March 15, 2023',
+        title: "CSS Grid vs Flexbox: When to Use Each",
+        excerpt: "A comprehensive comparison between CSS Grid and Flexbox",
+        image: "https://source.unsplash.com/400x250/?css,design",
+        date: "March 15, 2023",
       },
     ],
   };
@@ -125,19 +126,31 @@ const BlogPostPage = () => {
         <Grid container spacing={4}>
           {/* Main Content */}
           <Grid item xs={12} md={8}>
-            <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
+            <Typography
+              variant="h3"
+              component="h1"
+              gutterBottom
+              sx={{ fontWeight: 700 }}
+            >
               {post.title}
             </Typography>
 
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
+            <Box sx={{ display: "flex", alignItems: "center", mb: 4 }}>
               <Avatar src={post.authorAvatar} sx={{ mr: 2 }} />
               <Box>
                 <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
                   {post.author}
                 </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <CalendarIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
-                  <Typography variant="body2" color="text.secondary" sx={{ mr: 2 }}>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <CalendarIcon
+                    fontSize="small"
+                    sx={{ mr: 1, color: "text.secondary" }}
+                  />
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mr: 2 }}
+                  >
                     {post.date}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
@@ -169,39 +182,39 @@ const BlogPostPage = () => {
 
             <Box
               sx={{
-                '& h2': { 
-                  fontSize: '1.75rem',
+                "& h2": {
+                  fontSize: "1.75rem",
                   fontWeight: 600,
                   mt: 4,
                   mb: 2,
                 },
-                '& h3': { 
-                  fontSize: '1.5rem',
+                "& h3": {
+                  fontSize: "1.5rem",
                   fontWeight: 600,
                   mt: 3,
                   mb: 1.5,
                 },
-                '& p': {
-                  fontSize: '1.1rem',
+                "& p": {
+                  fontSize: "1.1rem",
                   lineHeight: 1.8,
                   mb: 2,
                 },
-                '& ul, & ol': {
+                "& ul, & ol": {
                   pl: 3,
                   mb: 2,
-                  '& li': {
+                  "& li": {
                     mb: 1,
                   },
                 },
-                '& pre': {
+                "& pre": {
                   // backgroundColor: theme.palette.mode === 'dark' ? '#1E1E1E' : '#f5f5f5',
                   p: 2,
                   borderRadius: 1,
-                  overflowX: 'auto',
+                  overflowX: "auto",
                   mb: 2,
                 },
-                '& code': {
-                  fontFamily: 'monospace',
+                "& code": {
+                  fontFamily: "monospace",
                 },
               }}
               dangerouslySetInnerHTML={{ __html: post.content }}
@@ -209,10 +222,18 @@ const BlogPostPage = () => {
 
             <Divider sx={{ my: 4 }} />
 
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
-              <Avatar src={post.authorAvatar} sx={{ width: 80, height: 80, mr: 3 }} />
+            <Box sx={{ display: "flex", alignItems: "center", mb: 4 }}>
+              <Avatar
+                src={post.authorAvatar}
+                sx={{ width: 80, height: 80, mr: 3 }}
+              />
               <Box>
-                <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
+                <Typography
+                  variant="h6"
+                  component="h3"
+                  gutterBottom
+                  sx={{ fontWeight: 600 }}
+                >
                   About {post.author}
                 </Typography>
                 <Typography variant="body1" paragraph>
@@ -221,7 +242,7 @@ const BlogPostPage = () => {
               </Box>
             </Box>
 
-            <Box sx={{ display: 'flex', gap: 1, mb: 4 }}>
+            <Box sx={{ display: "flex", gap: 1, mb: 4 }}>
               <IconButton aria-label="bookmark" color="primary">
                 <BookmarkIcon />
               </IconButton>
@@ -233,25 +254,47 @@ const BlogPostPage = () => {
 
           {/* Sidebar */}
           <Grid item xs={12} md={4}>
-            <Card sx={{ position: 'sticky', top: 20, mb: 4 }}>
+            <Card sx={{ position: "sticky", top: 20, mb: 4 }}>
               <CardContent>
-                <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
+                <Typography
+                  variant="h6"
+                  component="h3"
+                  gutterBottom
+                  sx={{ fontWeight: 600 }}
+                >
                   Related Posts
                 </Typography>
                 <Stack spacing={2}>
-                  {post.relatedPosts.map(relatedPost => (
-                    <Card key={relatedPost.id} sx={{ display: 'flex' }}>
+                  {post.relatedPosts.map((relatedPost) => (
+                    <Card key={relatedPost.id} sx={{ display: "flex" }}>
                       <CardMedia
                         component="img"
-                        sx={{ width: 100, display: { xs: 'none', sm: 'block' } }}
+                        sx={{
+                          width: 100,
+                          display: { xs: "none", sm: "block" },
+                        }}
                         image={relatedPost.image}
                         alt={relatedPost.title}
                       />
-                      <Box sx={{ display: 'flex', flexDirection: 'column', p: 1.5 }}>
-                        <Typography variant="subtitle2" component="h4" sx={{ fontWeight: 600 }}>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          p: 1.5,
+                        }}
+                      >
+                        <Typography
+                          variant="subtitle2"
+                          component="h4"
+                          sx={{ fontWeight: 600 }}
+                        >
                           {relatedPost.title}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{ mb: 1 }}
+                        >
                           {relatedPost.date}
                         </Typography>
                         <Button
@@ -259,7 +302,7 @@ const BlogPostPage = () => {
                           color="primary"
                           component={Link}
                           to={`/blog/${relatedPost.id}`}
-                          sx={{ alignSelf: 'flex-start', mt: 'auto' }}
+                          sx={{ alignSelf: "flex-start", mt: "auto" }}
                         >
                           Read
                         </Button>
@@ -272,10 +315,19 @@ const BlogPostPage = () => {
 
             <Card>
               <CardContent>
-                <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 600 }}>
+                <Typography
+                  variant="h6"
+                  component="h3"
+                  gutterBottom
+                  sx={{ fontWeight: 600 }}
+                >
                   Newsletter
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 2 }}
+                >
                   Stay updated with our latest posts
                 </Typography>
                 <TextField
@@ -285,11 +337,7 @@ const BlogPostPage = () => {
                   size="small"
                   sx={{ mb: 2 }}
                 />
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                >
+                <Button fullWidth variant="contained" color="primary">
                   Subscribe
                 </Button>
               </CardContent>

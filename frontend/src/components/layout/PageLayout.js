@@ -1,11 +1,11 @@
-import React from 'react';
-import Navbar from './Navbar';
-import { Container, Box } from '@mui/material';
-import Footer from './Footer';
+import React from "react";
+import Navbar from "./Navbar";
+import { Container, Box } from "@mui/material";
+import Footer from "./Footer";
 
 const PageLayout = ({ children }) => {
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Container maxWidth="lg" sx={{ flex: 1, py: 4 }}>
         {children}
       </Container>

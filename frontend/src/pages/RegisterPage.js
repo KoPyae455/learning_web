@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -16,22 +16,22 @@ import {
   Grid,
   Checkbox,
   FormControlLabel,
-} from '@mui/material';
+} from "@mui/material";
 import {
   Email as EmailIcon,
   Lock as LockIcon,
   Visibility as VisibilityIcon,
   VisibilityOff as VisibilityOffIcon,
   Person as PersonIcon,
-} from '@mui/icons-material';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+} from "@mui/icons-material";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 // Social Media Icons
-import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const RegisterPage = () => {
   const theme = useTheme();
@@ -39,13 +39,13 @@ const RegisterPage = () => {
   const { register } = useAuth();
   const navigate = useNavigate();
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -54,28 +54,28 @@ const RegisterPage = () => {
       return setError("Passwords don't match");
     }
     try {
-      setError('');
+      setError("");
       setLoading(true);
-      const [first_name, ...rest] = name.trim().split(' ');
-      const last_name = rest.join(' ');
+      const [first_name, ...rest] = name.trim().split(" ");
+      const last_name = rest.join(" ");
       // Use email for both username and email fields
       const userData = {
         username: email,
         email,
-        first_name: first_name || '',
-        last_name: last_name || '',
+        first_name: first_name || "",
+        last_name: last_name || "",
         password,
         password_confirm: confirmPassword,
-        user_type: 'student',
+        user_type: "student",
       };
       const result = await register(userData);
       if (result?.success) {
-        navigate('/dashboard');
+        navigate("/dashboard");
       } else if (result?.error) {
         setError(result.error);
       }
     } catch (err) {
-      setError(err.message || 'Failed to create an account');
+      setError(err.message || "Failed to create an account");
       console.error(err);
     }
     setLoading(false);
@@ -89,9 +89,9 @@ const RegisterPage = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
         backgroundColor: theme.palette.background.default,
       }}
     >
@@ -100,9 +100,9 @@ const RegisterPage = () => {
         maxWidth="sm"
         sx={{
           flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
           py: 8,
         }}
       >
@@ -115,8 +115,12 @@ const RegisterPage = () => {
           }}
         >
           {/* Header */}
-          <Box sx={{ textAlign: 'center', mb: 4 }}>
-            <Typography variant="h4" component="h1" sx={{ fontWeight: 700, mb: 1 }}>
+          <Box sx={{ textAlign: "center", mb: 4 }}>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{ fontWeight: 700, mb: 1 }}
+            >
               Create Your Account
             </Typography>
             <Typography variant="body1" color="text.secondary">
@@ -180,7 +184,7 @@ const RegisterPage = () => {
               variant="outlined"
               margin="normal"
               required
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               InputProps={{
@@ -196,7 +200,11 @@ const RegisterPage = () => {
                       onClick={() => setShowPassword(!showPassword)}
                       edge="end"
                     >
-                      {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                      {showPassword ? (
+                        <VisibilityOffIcon />
+                      ) : (
+                        <VisibilityIcon />
+                      )}
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -208,7 +216,7 @@ const RegisterPage = () => {
               variant="outlined"
               margin="normal"
               required
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               InputProps={{
@@ -229,11 +237,11 @@ const RegisterPage = () => {
               }
               label={
                 <Typography variant="body2">
-                  I agree to the{' '}
+                  I agree to the{" "}
                   <Link component={RouterLink} to="/terms" color="primary">
                     Terms of Service
-                  </Link>{' '}
-                  and{' '}
+                  </Link>{" "}
+                  and{" "}
                   <Link component={RouterLink} to="/privacy" color="primary">
                     Privacy Policy
                   </Link>
@@ -253,7 +261,7 @@ const RegisterPage = () => {
               {loading ? (
                 <CircularProgress size={24} color="inherit" />
               ) : (
-                'Create Account'
+                "Create Account"
               )}
             </Button>
           </Box>
@@ -266,43 +274,47 @@ const RegisterPage = () => {
           </Divider>
 
           {/* Social Register Buttons */}
-          <Stack direction="row" spacing={2} sx={{ mb: 3, justifyContent: 'center' }}>
+          <Stack
+            direction="row"
+            spacing={2}
+            sx={{ mb: 3, justifyContent: "center" }}
+          >
             <IconButton
-              onClick={() => handleSocialRegister('google')}
+              onClick={() => handleSocialRegister("google")}
               sx={{
-                backgroundColor: '#DB4437',
-                color: 'white',
-                '&:hover': { backgroundColor: '#C33D2E' },
+                backgroundColor: "#DB4437",
+                color: "white",
+                "&:hover": { backgroundColor: "#C33D2E" },
               }}
             >
               <GoogleIcon />
             </IconButton>
             <IconButton
-              onClick={() => handleSocialRegister('facebook')}
+              onClick={() => handleSocialRegister("facebook")}
               sx={{
-                backgroundColor: '#4267B2',
-                color: 'white',
-                '&:hover': { backgroundColor: '#3B5998' },
+                backgroundColor: "#4267B2",
+                color: "white",
+                "&:hover": { backgroundColor: "#3B5998" },
               }}
             >
               <FacebookIcon />
             </IconButton>
             <IconButton
-              onClick={() => handleSocialRegister('twitter')}
+              onClick={() => handleSocialRegister("twitter")}
               sx={{
-                backgroundColor: '#1DA1F2',
-                color: 'white',
-                '&:hover': { backgroundColor: '#1991DA' },
+                backgroundColor: "#1DA1F2",
+                color: "white",
+                "&:hover": { backgroundColor: "#1991DA" },
               }}
             >
               <TwitterIcon />
             </IconButton>
             <IconButton
-              onClick={() => handleSocialRegister('linkedin')}
+              onClick={() => handleSocialRegister("linkedin")}
               sx={{
-                backgroundColor: '#0077B5',
-                color: 'white',
-                '&:hover': { backgroundColor: '#00669B' },
+                backgroundColor: "#0077B5",
+                color: "white",
+                "&:hover": { backgroundColor: "#00669B" },
               }}
             >
               <LinkedInIcon />
@@ -310,9 +322,9 @@ const RegisterPage = () => {
           </Stack>
 
           {/* Login Link */}
-          <Box sx={{ textAlign: 'center', mt: 3 }}>
+          <Box sx={{ textAlign: "center", mt: 3 }}>
             <Typography variant="body2" color="text.secondary">
-              Already have an account?{' '}
+              Already have an account?{" "}
               <Link component={RouterLink} to="/login" color="primary">
                 Sign in
               </Link>
@@ -338,8 +350,9 @@ const RegisterPage = () => {
                 Learning Platform
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Transform your career with our comprehensive online learning platform. 
-                Access experienced courses, video lessons, and stay updated with our IT blog.
+                Transform your career with our comprehensive online learning
+                platform. Access experienced courses, video lessons, and stay
+                updated with our IT blog.
               </Typography>
             </Grid>
 
@@ -352,10 +365,18 @@ const RegisterPage = () => {
                 <Link component={RouterLink} to="/blog" color="text.secondary">
                   Blog
                 </Link>
-                <Link component={RouterLink} to="/certificates" color="text.secondary">
+                <Link
+                  component={RouterLink}
+                  to="/certificates"
+                  color="text.secondary"
+                >
                   Certificates
                 </Link>
-                <Link component={RouterLink} to="/instructors" color="text.secondary">
+                <Link
+                  component={RouterLink}
+                  to="/instructors"
+                  color="text.secondary"
+                >
                   Instructors
                 </Link>
               </Stack>
@@ -367,16 +388,28 @@ const RegisterPage = () => {
                 Support
               </Typography>
               <Stack spacing={1}>
-                <Link component={RouterLink} to="/help-center" color="text.secondary">
+                <Link
+                  component={RouterLink}
+                  to="/help-center"
+                  color="text.secondary"
+                >
                   Help Center
                 </Link>
-                <Link component={RouterLink} to="/contact" color="text.secondary">
+                <Link
+                  component={RouterLink}
+                  to="/contact"
+                  color="text.secondary"
+                >
                   Contact Us
                 </Link>
                 <Link component={RouterLink} to="/faq" color="text.secondary">
                   FAQ
                 </Link>
-                <Link component={RouterLink} to="/community" color="text.secondary">
+                <Link
+                  component={RouterLink}
+                  to="/community"
+                  color="text.secondary"
+                >
                   Community
                 </Link>
               </Stack>
@@ -391,10 +424,18 @@ const RegisterPage = () => {
                 <Link component={RouterLink} to="/about" color="text.secondary">
                   About Us
                 </Link>
-                <Link component={RouterLink} to="/careers" color="text.secondary">
+                <Link
+                  component={RouterLink}
+                  to="/careers"
+                  color="text.secondary"
+                >
                   Careers
                 </Link>
-                <Link component={RouterLink} to="/privacy" color="text.secondary">
+                <Link
+                  component={RouterLink}
+                  to="/privacy"
+                  color="text.secondary"
+                >
                   Privacy Policy
                 </Link>
                 <Link component={RouterLink} to="/terms" color="text.secondary">
@@ -409,25 +450,25 @@ const RegisterPage = () => {
                 Follow Us
               </Typography>
               <Stack direction="row" spacing={1}>
-                <IconButton 
-                  component="a" 
-                  href="https://facebook.com" 
+                <IconButton
+                  component="a"
+                  href="https://facebook.com"
                   target="_blank"
                   sx={{ color: theme.palette.text.secondary }}
                 >
                   <FacebookIcon />
                 </IconButton>
-                <IconButton 
-                  component="a" 
-                  href="https://twitter.com" 
+                <IconButton
+                  component="a"
+                  href="https://twitter.com"
                   target="_blank"
                   sx={{ color: theme.palette.text.secondary }}
                 >
                   <TwitterIcon />
                 </IconButton>
-                <IconButton 
-                  component="a" 
-                  href="https://linkedin.com" 
+                <IconButton
+                  component="a"
+                  href="https://linkedin.com"
                   target="_blank"
                   sx={{ color: theme.palette.text.secondary }}
                 >

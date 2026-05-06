@@ -17,8 +17,7 @@ A modern, full-stack learning platform built with Django and React, inspired by 
 ### Backend
 - **Django 4.2.7**: Python web framework
 - **Django REST Framework**: API development
-- **PostgreSQL**: Production database
-- **SQLite**: Development database
+- **PostgreSQL**: Production database (SQLite for development)
 - **Celery**: Background task processing
 - **Redis**: Caching and message broker
 
@@ -38,52 +37,68 @@ learning-platform/
 │   ├── courses/            # Course management
 │   ├── videos/             # Video handling
 │   ├── blog/               # Blog system
-│   └── api/                # REST API endpoints
+│   ├── manage.py           # Django management script
+│   └── requirements.txt    # Python dependencies
 ├── frontend/               # React frontend
-│   ├── src/
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/          # Page components
-│   │   ├── services/       # API services
-│   │   └── utils/          # Utility functions
-│   └── public/             # Static files
+│   ├── src/                # Source code
+│   ├── public/             # Static files
+│   └── package.json        # Node.js dependencies
 ├── media/                  # User uploaded files
-├── static/                 # Static files
-└── requirements.txt        # Python dependencies
+└── README.md               # Project documentation
 ```
 
 ## Setup Instructions
 
-### Backend Setup
+### Prerequisites
+- Python 3.8 or higher
+- Node.js 16 or higher
+- Git
+- Virtual environment tool (venv, conda, etc.)
 
-1. **Create Virtual Environment**:
+### Backend Setup (Django)
+
+1. **Create and Activate Virtual Environment**:
    ```bash
+   # Create virtual environment
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+   # Activate virtual environment
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
    ```
 
-2. **Install Dependencies**:
+2. **Install Python Dependencies**:
    ```bash
+   cd backend
    pip install -r requirements.txt
    ```
 
-3. **Database Setup**:
-   ```bash
-   cd backend
-   python manage.py makemigrations
-   python manage.py migrate
+3. **Environment Configuration**:
+   Create a `.env` file in the `backend` directory based on `env.example`:
+   ```env
+   SECRET_KEY=your-secret-key-here
+   DEBUG=True
+   DATABASE_URL=sqlite:///db.sqlite3
+   ALLOWED_HOSTS=localhost,127.0.0.1
+   CORS_ALLOWED_ORIGINS=http://localhost:3000
    ```
 
-4. **Create Superuser**:
+4. **Database Setup**:
    ```bash
+   python manage.py makemigrations
+   python manage.py migrate
    python manage.py createsuperuser
    ```
 
-5. **Run Development Server**:
+5. **Run Django Server**:
    ```bash
    python manage.py runserver
    ```
+   The backend will be available at `http://localhost:8000`.
 
-### Frontend Setup
+### Frontend Setup (React)
 
 1. **Install Node.js Dependencies**:
    ```bash
@@ -91,30 +106,40 @@ learning-platform/
    npm install
    ```
 
-2. **Run Development Server**:
+2. **Environment Configuration**:
+   Create a `.env` file in the `frontend` directory:
+   ```env
+   REACT_APP_API_URL=http://localhost:8000
+   ```
+
+3. **Run React Development Server**:
    ```bash
    npm start
    ```
+   The frontend will be available at `http://localhost:3000`.
 
-## Environment Variables
+## API Endpoints Overview
 
-Create a `.env` file in the backend directory:
+### Authentication
+- `POST /api/auth/register/` - User registration
+- `POST /api/auth/login/` - User login
+- `POST /api/auth/logout/` - User logout
+- `GET /api/auth/me/` - Current user info
 
-```env
-SECRET_KEY=your-secret-key-here
-DEBUG=True
-DATABASE_URL=sqlite:///db.sqlite3
-ALLOWED_HOSTS=localhost,127.0.0.1
-CORS_ALLOWED_ORIGINS=http://localhost:3000
-```
+### Courses
+- `GET /api/courses/` - List all courses
+- `GET /api/courses/{slug}/` - Course details
+- `POST /api/courses/create/` - Create course (instructors)
 
-## API Endpoints
+### Videos
+- `GET /api/videos/` - List videos
+- `GET /api/videos/{id}/` - Video details
+- `POST /api/videos/create/` - Upload video
 
-- **Authentication**: `/api/auth/`
-- **Courses**: `/api/courses/`
-- **Videos**: `/api/videos/`
-- **Blog**: `/api/blog/`
-- **Users**: `/api/users/`
+### Blog
+- `GET /api/blog/` - List blog posts
+- `GET /api/blog/{slug}/` - Blog post details
+- `POST /api/blog/create/` - Create blog post
 
 ## Contributing
 
